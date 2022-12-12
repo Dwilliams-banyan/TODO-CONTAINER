@@ -16,5 +16,30 @@
         <input type="submit" name="update" label="update" value="Update" />
         <input type="submit" name="delete" label="delete" value="Delete" />
     </form>
+    <hr>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ tag_form }}
+        <input type="submit" name="tag" label="tag" value="Tag" />
+    </form>
+    <br>
+    <p>
+        {% for tag in tag_list %}
+        {{ tag.name }} |
+        {% endfor %}
+    </p>
+    <br>
+    <form method="POST">
+        {% csrf_token %}
+        {{ comment_form }}
+        <input type="submit" name="add" label="add" value="Add" />
+    </form>
+
+    <ul>
+        {% for comment in comment_list %}
+            <li>{{ comment.body }}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
